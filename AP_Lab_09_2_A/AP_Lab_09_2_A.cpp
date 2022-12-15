@@ -108,16 +108,16 @@ int* IndexSortArrayOfStructure(Student* students, const int studentsCount)
     for (int ii = 0; ii < studentsCount; ii++)
         indexes[ii] = ii;
 
-    int ii, jj, index;
+    int ii, jj, value;
 
     for (ii = 1; ii < studentsCount; ii++)
     {
-        index = indexes[ii];
+        value = indexes[ii];
 
         for (jj = ii - 1; jj >= 0 &&
-            (students[indexes[jj]].course > students[index].course) ||
-            (students[indexes[jj]].course == students[index].course && AverageGrade(students[indexes[jj]]) > AverageGrade(students[index])) ||
-            (students[indexes[jj]].course == students[index].course && AverageGrade(students[indexes[jj]]) == AverageGrade(students[index]) && students[indexes[jj]].surname < students[index].surname);
+            ((students[indexes[jj]].course > students[value].course) ||
+                (students[indexes[jj]].course == students[value].course && AverageGrade(students[indexes[jj]]) > AverageGrade(students[value])) ||
+                (students[indexes[jj]].course == students[value].course && AverageGrade(students[indexes[jj]]) == AverageGrade(students[value]) && students[indexes[jj]].surname < students[value].surname));
             jj--)
         {
             indexes[jj + 1] = indexes[jj];
@@ -170,7 +170,7 @@ int main()
 
     do
     {
-        cout << endl << endl << endl;
+        cout << endl;
         cout << "Виберіть дію:" << endl << endl;
         cout << " [1] - введення даних з клавіатури" << endl;
         cout << " [2] - вивід даних на екран" << endl;  
@@ -181,7 +181,7 @@ int main()
 
         cout << "Введіть значення: "; cin >> menuItem;
 
-        cout << endl << endl << endl;
+        cout << endl;
 
         switch (menuItem)
         {
@@ -219,4 +219,6 @@ int main()
             cout << "Помилка! Оберіть пункт меню правильно!";
         } 
     } while (menuItem != 0);
+
+    system("pause");
 }   
